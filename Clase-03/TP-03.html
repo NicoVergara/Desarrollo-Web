@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>TP03 - Funciones</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+
+    // Actividad 1: Calcular IVA
+    var precioTotal = parseInt(prompt("Ingrese precio del producto: "));
+    var tasa = 1.21;
+
+    function calcularIva(precioTotal, tasa) {
+      var iva = precioTotal * tasa;
+    }
+
+    var tieneDescuento = prompt("¿Tiene descuento? (Si/No)").toUpperCase();
+    while (tieneDescuento == "si") {
+      //Calcular precio con descuento
+      console.log("El precio con descuento es: ");
+      if (tieneDescuento == "no") {
+        break;
+      }
+    }
+
+    console.log("El precio con IVA es: ", (precioTotal * tasa));
+    alert("El precio con IVA es: " + (precioTotal * tasa));
+
+    // Actividad 2: Calcular sueldo
+    
+
+    // Actividad 3: Dados
+
+
+    // Actividad 4: Piedra, Papel o Tijera
+    var eligeUsuario = prompt("¿piedra, papel o tijera?");
+
+    var eligeComputadora = Math.floor(Math.random() * 3);
+    if (eligeComputadora == 0) {
+      eligeComputadora = "piedra";
+    } else if (eligeComputadora == 1) {
+      eligeComputadora = "papel";
+    } else {
+      eligeComputadora = "tijera";
+    }
+    alert("Computadora Elige: " + eligeComputadora);
+
+    var jugar = function(eligeUsuario, eligeComputadora) {
+      if (eligeUsuario == eligeComputadora) {
+        return "¡Empate!";
+      }
+      if (eligeUsuario == "piedra") {
+        if (eligeComputadora == "tijera") {
+          return "¡Ganaste!";
+        } else {
+          return "¡Perdiste!"; // eligeComputadora: PAPEL
+        }
+      }
+      if (eligeUsuario == "papel") {
+        if (eligeComputadora == "piedra") {
+          return "¡Ganaste!";
+        } else {
+          return "¡Perdiste!"; // eligeComputadora: TIJERA
+        }
+      }
+      if (eligeUsuario == "tijera") {
+        if (eligeComputadora == "papel") {
+          return "¡Ganaste!";
+        } else {
+          return "¡Perdiste!"; // eligeComputadora: PIEDRA
+        }
+      }
+    }
+
+    alert(jugar(eligeUsuario, eligeComputadora));
+
+
+    // Actividad 5: Mejorar Calculadora
+    var num1 = parseInt(prompt("Ingresá un número"));
+    var num2 = parseInt(prompt("Ingresá otro número"));
+
+    var suma = function(num1, num2) {
+      return num1 + num2;
+    }
+
+    var resta = function(num1, num2) {
+      return num1 - num2;
+    }
+
+    var multiplicacion = function(num1, num2) {
+      return num1 * num2;
+    }
+
+    var division = function(num1, num2) {
+      return num1 / num2;
+    }
+
+    console.log("La suma es: ", (num1 + num2));
+    console.log("La resta es: ", (num1 - num2));
+    console.log("La multiplicaciòn es: ", (num1 * num2));
+    console.log("La división es: ", (num1 / num2));
+    alert("La suma es: " + (num1 + num2));
+    alert("La resta es: " + (num1 - num2));
+    alert("La multiplicaciòn es: " + (num1 * num2));
+    alert("La división es: " + (num1 / num2));
+
+  </script>
+</body>
+
+</html>

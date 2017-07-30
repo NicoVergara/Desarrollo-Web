@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Clase03 - Funciones</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      function saludar(saludo){
+        alert(saludo);
+      }
+
+      saludar("¡Hola!");
+      saludar("¡Adios!");
+
+      var suma = function(numero1, numero2){
+        alert(numero1 + numero2);
+      }
+
+      suma(10, 5);
+
+
+      // Crear 4 funciones (+, -, *, %)
+      var num1 = parseInt(prompt("Ingrese un número"));
+      var num2 = parseInt(prompt("Ingrese otro número"));
+
+      var suma = function(num1, num2){
+        return num1 + num2;
+      }
+
+      var resta = function(num1, num2){
+        return num1 - num2;
+      }
+
+      var multiplicacion = function(num1, num2){
+        return num1 - num2;
+      }
+
+      var division = function(num1, num2){
+        return num1 - num2;
+      }
+
+      alert("La suma es: " + (num1 + num2));
+      alert("La resta es: " + (num1 - num2));
+      alert("La multiplicación es: " + (num1 * num2));
+      alert("La división es: " + (num1 / num2));
+
+
+      Funciones con Argumentos o Múltiples Parámetros
+      function suma(){
+        var resultado = 0;
+
+        for(numero in arguments){
+          resultado += arguments[numero];
+        }
+        return resultado;
+      }
+
+      alert(suma(5, 4));
+      alert(suma(5, 4, 10, 100));
+
+
+      function suma(){
+        var sumaTotal = 0;
+
+        for(numero in arguments){
+          sumaTotal += arguments[numero];
+        }
+        return sumaTotal;
+      }
+
+      alert(suma(10, 40, 1, 20));
+
+
+      function resta(){
+        var restaTotal = arguments[0];
+
+        for(var numero = 1; numero < arguments.lenght; numero++){
+          restaTotal = restaTotal - arguments[numero];
+        }
+        return restaTotal;
+      }
+
+      alert(resta(20, 5, 2));
+
+
+      function multiplicacion(){
+        var multiplicationTotal = 1;
+
+        for(numero in arguments){
+          multiplicationTotal *= arguments[numero];
+        }
+        return multiplicationTotal
+      }
+
+      alert(multiplicacion(2, 2));
+
+    </script>
+  </body>
+</html>
