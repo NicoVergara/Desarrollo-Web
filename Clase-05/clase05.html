@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Clase05 - Mètodos de Strings y Arrays</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      var superheroes = [
+      "Batman",
+      "Superman",
+      "Mujer Maravilla",
+      "Maquina de Guerra",
+      ];
+
+      // Agrego elementos al array.
+      superheroes.push("Iron Man");
+      // Elimino el último elemento del array.
+      var eliminado = superheroes.pop();
+
+      console.log(superheroes);
+      console.log("El Superhéroe eliminado es: " + eliminado);
+
+
+      // Sacar el primer elemento del array.
+      var equiposFutbol = [
+      "Boca",
+      "River",
+      "Racing",
+      "Independiente",
+      "San Lorenzo",
+      "Huracan"
+      ];
+
+      var auxiliar = [];
+      var largoInicial = equiposFutbol.length;
+
+      for(var i = 0; i < largoInicial; i++) {
+        var eliminado = equiposFutbol.pop();
+        auxiliar.push(eliminado);
+      }
+
+      auxiliar.pop();
+
+      largoInicial = auxiliar.length;
+
+      for(var i = 0; i < largoInicial; i++) {
+        eliminado = auxiliar.pop();
+        equiposFutbol.push(eliminado);
+      }
+
+      console.log(auxiliar);
+      console.log(equiposFutbol);
+
+
+      // Recorrer dos arrays y comparar elementos.
+      var apellidos = [
+      	"Gonzalez",
+      	"Perez",
+      	"Blanco",
+      	"Espósito",
+      	"Martínez"
+      ];
+
+      var colores = [
+      	"Azul",
+      	"Verde",
+      	"Amarillo",
+      	"Blanco",
+      	"Naranja",
+      ];
+
+      for(var i = 0; i < apellidos.length; i++) {
+
+      	for(var j = 0; j < colores.length; j++) {
+      		console.log("Comparando: " + apellidos[i] + " con " + colores[j]);
+
+      		if(apellidos[i] === colores[j]) {
+      			console.log("El Sr. " + apellidos[i] + " tiene apellido de color " + colores[j]);
+      		}
+      	}
+
+      }
+
+
+      // Recorrer el array y eliminar Google con una función.
+      var empresas = [
+      	"Nintendo",
+      	"Google",
+      	"Microsoft",
+      	"Apple",
+      	"Samsung",
+      	"Sony"
+      ];
+
+      function eliminarGoogle(arrayEmpresas) {
+
+      	// Recorro el array de atrás hacia adelante
+      	for(var i = arrayEmpresas.length - 1; i >= 0; i--) {
+      		console.log(i);
+      		console.log(arrayEmpresas[i]);
+
+      		if(arrayEmpresas[i] !== "Google") {
+      			arrayEmpresas.pop();
+      		} else {
+      			break;
+      		}
+      	}
+      	console.log(arrayEmpresas);
+      }
+
+      eliminarGoogle(empresas);
+
+
+      // Agregar Jugadores a un array y consultar si vino Maradona.
+      var jugadores = [];
+
+      function agregarJugadores() {
+
+      	var consulta = true;
+      	while(consulta === true) {
+      		var nombre = prompt("Ingrese nombre de Jugadores");
+      		jugadores.push(nombre);
+      		consulta = confirm("¿Desea agregar más Jugadores?");
+      	}
+
+      }
+
+      function vinoMaradona(arrayJugadores) {
+
+      	for(var i = 0; i < arrayJugadores.length; i++) {
+      		if(arrayJugadores[i] !== "Maradona") {
+      			console.log("¡Vino el Diego!");
+      			break;
+      		} else {
+      			return false;
+      		}
+      	}
+
+      }
+
+      agregarJugadores();
+      vinoMaradona(jugadores);
+      console.log("Los Jugadores son: " + jugadores);
+
+
+      // Consultar los tipos de elementos de un array.
+      var arrayARecorrer = [true, "Hola", "Roberto", 2345, false];
+
+      function revisarTipo(arrayRecorrer) {
+
+      	var contadorString = 0;
+      	var contadorNumero = 0;
+      	var contadorBooleanos = 0;
+
+      	for(var i = 0; i < arrayARecorrer.length; i++) {
+      		// typeof: devuelve información acerca del tipo de variable que estoy consultando.
+      		if(typeof(arrayARecorrer[i]) === "string") {
+      			contadorString++;
+      		}
+
+      		if(typeof(arrayARecorrer[i]) === "number"){
+      			contadorNumero++;
+      		}
+
+      		if(typeof(arrayARecorrer[i]) === "boolean") {
+      			contadorBooleanos++;
+      		}
+      	}
+
+      	console.log("La cantidad de Strings que tiene el array es: " + contadorString);
+      	console.log("La cantidad de Numeros que tiene el array es: " + contadorNumero);
+      	console.log("La cantidad de Booleanos que tiene el array es: " + contadorBooleanos);
+
+      }
+
+      revisarTipo(arrayARecorrer);
+
+
+      // Recorrer un array de un array.
+      var paises = [
+      	["Argentina", "Brasil", "Chile"],
+      	["Irlanda", "Francia", "España"],
+      	["Nueva Zelanda", "Australia",],
+      ];
+
+      for(var i = 0; i < paises.length; i++) {
+
+      	console.log(paises[i]);
+
+      	for(var j = 0; j < paises[i].length; j++) {
+      		console.log(paises[i][j]);
+      	}
+
+      }
+
+      // Splice: eliminar elementos de un array.
+      var nombres = ["Carlos", "Pepe", "Moni", "Susana"];
+
+      // Recorro el array y elimino Superman
+      for(var i = 0; i < nombres.length; i++) {
+
+      	if(nombres[i] === 'Superman') {
+      		nombres.splice(i, 1);
+      	}
+      	console.log(nombres[i]);
+      }
+
+      console.log(nombres);
+
+
+      /*
+
+      EJERCICIO N°14
+
+      Crear una function que ordene un array
+      dependiendo de sus argumentos
+      Debe recibir:
+      - Un array a ordernar
+      - Un string con la forma de ordenamiento ('asc' o no).
+
+      */
+
+      var edades = [4, 8,32,54,16,28];
+
+      function ordenar(arrayAOrdenar, modo){
+
+        // El método ".sort" de los arrays va a implementar el burbujeo comparando de a dos elementos: a y b
+        arrayAOrdenar.sort(function(a,b){  //Recibe una function como argumento:
+
+          if (modo === 'asc') {
+
+            if(a > b) {
+              return 1 // Si retorna 1 cambian de lugar
+            } else {
+              return -1 // Si retorna -1 no cambian de lugar
+            }
+
+          } else { //En caso contrario, invierto los resultados
+
+            if(a > b) {
+              return -1
+            } else {
+              return 1
+            }
+
+          }
+
+        });
+
+      }
+
+      // Ordenamos ascendentemente
+      ordenar(edades,'asc');
+      console.log(edades);
+
+      // Ordenamos ascendentemente
+      ordenar(edades,'para abajo');
+      console.log(edades);
+
+
+      // Eliminar un elementos del array
+      var nombres = ['Carlos', 'Superman','Gato loco', 'Luciana','pepe','lalala'];
+
+      //nombres.splice(2,1);
+
+
+      for (var i = 0; i < nombres.length; i++) {
+
+        if( nombres[i] === 'Superman' ) {
+          nombres.splice( i , 1)
+        }
+
+      }
+
+      console.log(nombres);
+
+
+    </script>
+  </body>
+</html>

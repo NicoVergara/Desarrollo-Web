@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TP05 - Mètodos de Strings y Arrays</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      // Ejercicio 1: cargar Autos a un Camión.
+      function Camion() {
+        this.capacidadCarga = 1000;
+        this.capacidadActual = 0;
+        this.autos = [];
+
+        this.agregarAuto = function() {
+
+          while(true) {
+
+            var auto = new Auto();
+            auto.patente = prompt("Ingrese la patente:");
+            auto.peso = parseInt(prompt("Ingrese el peso:"));
+
+            if(this.encontrarDuplicados(auto) === true) {
+              alert("Patente duplicada, no se puede cargar el Auto.");
+            }else {
+              this.capacidadActual += auto.peso;
+            }
+
+            if(this.capacidadActual <= this.capacidadCarga) {
+              console.log("La capacidad actual es: ", this.capacidadCarga);
+              this.autos.push(auto);
+            }else {
+              alert("Peso máximo superado, no se puede cargar el Auto");
+            }
+
+            var consulta = confirm("¿Desea agregar otro Auto?");
+            if(consulta === false) {
+              break;
+            }
+
+          }
+          return this.autos;
+        };
+
+        // Buscar la patente en el array de autos.
+        this.encontrarDuplicados = function(auto) {
+          for(var i = 0; i < this.autos.length; i++) {
+            if(auto.patente === this.autos[i].patente) {
+              return true;
+            } else {
+             return false;
+            }
+          }
+        };
+
+      }
+
+      function Auto(patente, peso) {
+        this.patente = patente;
+        this.peso = peso;
+      }
+
+      var miCamion = new Camion();
+      miCamion.agregarAuto();
+
+
+      // Ejercicio 2: Cargar Películas.
+      // Constructor de Películas: agrega, busca y elimina películas.
+      function Pelicula(id, titulo) {
+        this.id = id;
+        this.titulo = titulo;
+      }
+
+      // Objeto Películas: Agrega, busca, elimina y ordena Películas.
+      function Peliculas() {
+        // TODO : this
+        var peliculas = [];
+
+        // Agregar Películas.
+        this.agregarPeliculas = function() {
+          var consulta = confirm('¿Desea agregar una Película?');
+
+          while (consulta) {
+            var nuevaPeli = new Pelicula();
+            nuevaPeli.id = parseInt(prompt('Ingrese un ID:'));
+            nuevaPeli.titulo = prompt('Ingrese el Título:');
+
+            if (this.buscarPelicula(nuevaPeli)) {
+              console.log('La película ya se encuentra en la base de datos.');
+              return peliculas;
+            } else {
+              peliculas.push(nuevaPeli);
+            }
+
+            consulta = confirm('¿Desea agregar otra Película?');
+          }
+
+          console.log(peliculas);
+          return peliculas;
+        }
+
+        // Eliminar Películas por ID.
+        this.eliminarPeliculas = function() {
+          var eliminar = confirm('¿Desea eliminar una Película?');
+
+          while (eliminar) {
+            var id = parseInt(prompt('Ingrese un ID'));
+            var peliculaAEliminar = new Pelicula();
+            peliculaAEliminar.id = id;
+
+            var peliculaEncontradaPosicion = this.buscarPelicula(peliculaAEliminar);
+            console.log(peliculaEncontradaPosicion);
+
+            if (peliculaEncontradaPosicion) {
+              peliculas.splice(peliculaEncontradaPosicion, 1);
+              console.log('La Película fue eliminada de la base de datos.');
+              return peliculas;
+            } else {
+              console.log('La Película ya se encuentra eliminada o bien no se encuentra.');
+            }
+
+            eliminar = confirm('¿Desea eliminar otra Película?');
+          }
+
+          console.log(peliculas);
+          return peliculas;
+        }
+
+        // Ordenar Películas por ID.
+
+        // Buscar Películas por ID.
+        this.buscarPelicula = function(pelicula) {
+          for (var i = 0; i < peliculas.length; i++) {
+            if (pelicula.id === peliculas[i].id) {
+              return i;
+            }
+          }
+        }
+
+      }
+
+      var miVideo = new Peliculas()
+      miVideo.agregarPeliculas();
+      miVideo.eliminarPeliculas();
+
+    </script>
+  </body>
+</html>
