@@ -14,13 +14,13 @@ function Noticia(titulo, descripcion, imagen) {
 // Agregar Noticias.
 function agregarNoticias() {
   var consulta = confirm('¿Desea agregar una Noticia?');
-  while(consulta) {
+  while (consulta) {
     var nuevaNoticia = new Noticia();
     nuevaNoticia.titulo = prompt('Ingrese el título de la Noticia:');
     nuevaNoticia.descripcion = prompt('Ingrese la descripción de la Noticia:');
     nuevaNoticia.imagen = prompt('Ingrese la imagen de la Noticia:');
 
-    if(buscarNoticias(nuevaNoticia.titulo) !== -1) {
+    if (buscarNoticias(nuevaNoticia.titulo) !== -1) {
       alert('La Noticia ya se encuentra en la base de datos.');
     } else {
       noticias.push(nuevaNoticia);
@@ -38,13 +38,13 @@ function agregarNoticias() {
 function buscarNoticias(tituloBuscado) {
   return noticias.findIndex(function(noticia) {
     return noticia.titulo === tituloBuscado;
-  })
+  });
 }
 
 // Renderizar las Noticias en el browser.
 function renderizarNoticias() {
   var lista = document.querySelector('li');
-  for(var i = 0; i < noticias.length; i++) {
+  for (var i = 0; i < noticias.length; i++) {
     // Agrego Título.
     var titulo = document.createElement('h1');
     titulo.innerHTML = noticias[i].titulo;
@@ -66,4 +66,4 @@ function renderizarNoticias() {
 // Evento click del botón agregar.
 btnAgregar.onclick = function() {
   agregarNoticias();
-}
+};
