@@ -9,33 +9,132 @@
 <body>
   <script type="text/javascript">
 
-    // Actividad 1: Calcular IVA
-    var precioTotal = parseInt(prompt("Ingrese precio del producto: "));
-    var tasa = 1.21;
+    // Ejercicio 1: Calcular IVA
+    function ejercicioCalcularIva(){
+      var precio = parseInt(prompt("Ingresar precio:"));
+      var descuento = confirm("¿Tiene descuento?");
 
-    function calcularIva(precioTotal, tasa) {
-      var iva = precioTotal * tasa;
-    }
+      function precioConYSinIva(){
+        var msjSinIva = "Su precio sin IVA es: ";
+        var msjConIva = "Su precio con IVA es de: ";
+        var precioSinIva = 0;
+        var precioConIva = 0;
+        for (num in arguments){
+          if (arguments[1]) {
+            precioSinIva = arguments[num];
+            precioSinIva *= 0.85;
+            precioConIva = precioSinIva * 1.21;
+            break;
+          } else{
+            precioSinIva = arguments[num];
+            precioConIva = precioSinIva * 1.21;
+            break;
+          }
+        }
 
-    var tieneDescuento = prompt("¿Tiene descuento? (Si/No)").toUpperCase();
-    while (tieneDescuento == "si") {
-      //Calcular precio con descuento
-      console.log("El precio con descuento es: ");
-      if (tieneDescuento == "no") {
-        break;
+        return msjSinIva + precioSinIva + "\n" + msjConIva + precioConIva;
+      }
+
+      if (!(isNaN(precio)) ) {
+        alert(precioConYSinIva(precio, descuento));
       }
     }
 
     console.log("El precio con IVA es: ", (precioTotal * tasa));
     alert("El precio con IVA es: " + (precioTotal * tasa));
 
-    // Actividad 2: Calcular sueldo
-    
+    // Ejercicio 2: Calcular sueldo
+    function ejercicioSueldo(){
+      var sueldoBase = parseInt(prompt("Ingrese su sueldo base"));
+      var horasExtra = parseInt(prompt("Ingrese horas extra"));
+      var porcentajeAportes = 0.10;
 
-    // Actividad 3: Dados
+      function calcularCategoria(sueldoBase){
+        if (sueldoBase >= 1000 && sueldoBase < 5000) {
+          var categoria = parseInt(sueldoBase.toString()[0]);
+        } else if (sueldoBase < 1000){
+          categoria = 0;
+        } else {
+          categoria = 5;
+        }
+        return categoria;
+      }
 
+      function calcularAportes(){
+        var aportes = sueldoBase * porcentajeAportes;
+        return aportes;
+      }
 
-    // Actividad 4: Piedra, Papel o Tijera
+      function calcularHorasExtra(){
+        var sueldoPorHoraExtra = 0;
+        if (calcularCategoria(sueldoBase) < 4) {
+          sueldoPorHora = sueldoBase / 160;
+          sueldoPorHoraExtra = sueldoPorHora * 1.5;
+        } else{
+          sueldoPorHora = sueldoBase / 160;
+          sueldoPorHoraExtra = sueldoPorHora * 2;
+        }
+        return sueldoPorHoraExtra
+      }
+
+      function calcularSueldoTotal(sueldoBase, horasExtra){
+        var aportes = calcularAportes(sueldoBase);
+        var horasExtra = calcularHorasExtra(sueldoBase, horasExtra);
+        var mensaje = "Su sueldo total es de: ";
+        var sueldoTotal = sueldoBase - calcularAportes() + horasExtra
+        return sueldoTotal;
+      }
+
+      function imprimirConsola(){
+        console.log("Sueldo base:", sueldoBase, "\nAportes:", calcularAportes(), "\nHoras extra:", calcularHorasExtra(), "\nCategoría:", calcularCategoria(), "\nSueldo total:", calcularSueldoTotal(sueldoBase, horasExtra))
+      }
+
+      imprimirConsola();
+    }
+
+    // Ejercicio 3: Dados
+    function ejercicioDados(){
+      var puntuacionUsuario = [];
+      var juegoTerminado = false;
+      var puntuacionTotal = 0;
+      for (var i = 0; i < 5; i++){
+        var numero = Math.floor(Math.random()*11);
+        console.log("Tu número es",numero);
+        if (numero === 0) {
+          console.log("¡Has perdido el juego!");
+          puntuacionUsuario.push("Perdiste!");
+          juegoTerminado = true;
+          break;
+        } else if (numero >= 1 && numero <= 3) {
+          console.log("Tienes 5 puntos");
+          puntuacionUsuario.push("5");
+        } else if (numero >= 4 && numero <=6) {
+          console.log("Tienes 10 puntos");
+          puntuacionUsuario.push("10");
+        } else if (numero >= 7 && numero <=9) {
+          console.log("Tienes 50 puntos");
+          puntuacionUsuario.push("50");
+        } else if (numero === 10) {
+          console.log("¡Has ganado el juego!");
+          puntuacionUsuario.push("Ganaste!");
+          juegoTerminado = true;
+          break;
+        } else {
+          console.log("Funcionó mal el juego");
+          juegoTerminado = true;
+        }
+      }
+
+      for (num in puntuacionUsuario) {
+        puntuacionTotal += parseInt(puntuacionUsuario[num]);
+      }
+
+      if(!juegoTerminado){
+        console.log("Tu puntuación total es de:", puntuacionTotal);
+      }
+    }
+
+    // Ejercicio 4: Piedra, Papel o Tijera
     var eligeUsuario = prompt("¿piedra, papel o tijera?");
 
     var eligeComputadora = Math.floor(Math.random() * 3);
@@ -78,34 +177,100 @@
     alert(jugar(eligeUsuario, eligeComputadora));
 
 
-    // Actividad 5: Mejorar Calculadora
-    var num1 = parseInt(prompt("Ingresá un número"));
-    var num2 = parseInt(prompt("Ingresá otro número"));
+    // Ejercicio 5: Mejorar Calculadora
+    function ejercicioCalculadora(){
+      var operacion = prompt("Elija su operación: suma, resta, multiplicación ó división").toLowerCase();
+      var arrayDeOpciones = ["suma", "resta", "multiplicacion", "division"];
+      var numerosACalcular = [];
 
-    var suma = function(num1, num2) {
-      return num1 + num2;
+      while (!arrayDeOpciones.includes(operacion)){
+        alert("No ha elegido una opción correcta");
+        var operacion = prompt("Elija su operación: suma, resta, multiplicacion ó division").toLowerCase();
+      }
+
+      function agregarNumero(){
+        var numeroParaAgregar = parseInt(prompt("Ingrese número para realizar operación"));
+        while (isNaN(numeroParaAgregar)){
+          alert("No ingreso un número, vuelva a intentar");
+          var numeroParaAgregar = parseInt(prompt("Ingrese número para realizar operación"));
+        }
+        numerosACalcular.push(numeroParaAgregar);
+      }
+
+      agregarNumero();
+
+      while (confirm("¿Desea agregar otro número?")){
+        agregarNumero();
+      }
+
+      switch (operacion) {
+        case "suma":
+          console.log(suma(numerosACalcular));
+          break;
+        case "resta":
+          console.log(resta(numerosACalcular));
+          break;
+        case "multiplicacion":
+          console.log(multiplica(numerosACalcular));
+          break;
+        case "division":
+          console.log(divide(numerosACalcular));
+          break;
+        default:
+          console.log("Hubo un error");
+          break;
+      }
+
+      function suma(numerosArray) {
+        var resultado = 0;
+
+        for (numero in numerosArray) {
+          resultado += numerosArray[numero];
+        }
+
+        return resultado;
+      }
+
+      function resta(numerosArray) {
+        var resultado = numerosArray[0];
+
+        for (var numero = 1; numero < numerosArray.length; numero++) {
+            resultado -= numerosArray[numero];
+          }
+
+        return resultado;
+      }
+
+      function multiplica(numerosArray) {
+        var resultado = numerosArray[0];
+
+        for (var numero = 1; numero < numerosArray.length; numero++) {
+            resultado *= numerosArray[numero];
+          }
+
+        return resultado;
+      }
+
+      function divide(numerosArray) {
+        var resultado = numerosArray[0];
+
+        for (var numero = 1; numero < numerosArray.length; numero++) {
+          if (numerosArray[numero] === 0) {
+            return "¡No se puede dividir por 0!";
+          } else{
+            resultado /= numerosArray[numero];
+          }
+        }
+
+        return resultado;
+      }
     }
 
-    var resta = function(num1, num2) {
-      return num1 - num2;
-    }
-
-    var multiplicacion = function(num1, num2) {
-      return num1 * num2;
-    }
-
-    var division = function(num1, num2) {
-      return num1 / num2;
-    }
-
-    console.log("La suma es: ", (num1 + num2));
-    console.log("La resta es: ", (num1 - num2));
-    console.log("La multiplicaciòn es: ", (num1 * num2));
-    console.log("La división es: ", (num1 / num2));
-    alert("La suma es: " + (num1 + num2));
-    alert("La resta es: " + (num1 - num2));
-    alert("La multiplicaciòn es: " + (num1 * num2));
-    alert("La división es: " + (num1 / num2));
+    // ejercicioCalcularIva();
+    // ejercicioSueldo();
+    // ejercicioDados();
+    // ejercicioPiedraPapelTijera();
+    //ejercicioCalculadora();
 
   </script>
 </body>
