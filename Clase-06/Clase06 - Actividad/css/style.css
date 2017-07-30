@@ -31,3 +31,9 @@ header h1 {
   outline: none;
   cursor: pointer;
 }
+
+ul,
+li {
+  list-style: none;
+  text-decoration: none;
+}

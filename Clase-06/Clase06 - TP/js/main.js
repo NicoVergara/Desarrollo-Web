@@ -13,14 +13,14 @@ function Pelicula(id, titulo, descripcion, imagen) {
 
 function agregarPeliculas() {
   var agregar = confirm('¿Desea agregar una Película?');
-  while(agregar) {
+  while (agregar) {
     var nuevaPelicula = new Pelicula();
     nuevaPelicula.id = parseInt(prompt('Ingrese el ID:'));
     nuevaPelicula.titulo = prompt('Ingrese el Título:');
     nuevaPelicula.descripcion = prompt('Ingrese la Descripción:');
     nuevaPelicula.imagen = prompt('Ingrese la ruta de la Imagen:');
 
-    if(buscarPeliculas(nuevaPelicula.id) !== -1) {
+    if (buscarPeliculas(nuevaPelicula.id) !== -1) {
       alert('La Película ya se encuentra en la base de datos.');
     } else {
       peliculas.push(nuevaPelicula);
@@ -34,13 +34,15 @@ function agregarPeliculas() {
 
 function eliminarPeliculas() {
   var eliminar = confirm('¿Desea eliminar una Película?');
-  while(eliminar) {
+  while (eliminar) {
     var peliculaAEliminar = new Pelicula();
     peliculaAEliminar.id = parseInt(prompt('Ingrese el ID:'));
 
     if (buscarPeliculas(peliculaAEliminar.id) !== -1) {
       peliculas.splice(peliculaAEliminar, 1);
-      alert('La Película con el ID: ' + peliculaAEliminar.id + ' fue eliminada.');
+      alert(
+        'La Película con el ID: ' + peliculaAEliminar.id + ' fue eliminada.'
+      );
     } else {
       alert('La Película no se encuentra en la base de datos.');
     }
@@ -56,19 +58,19 @@ function eliminarPeliculas() {
 function buscarPeliculas(idBuscado) {
   return peliculas.findIndex(function(pelicula) {
     return pelicula.id === idBuscado;
-  })
+  });
 }
 
 function renderizarPeliculas() {
-  var lista = document.querySelector('li')
-  for(var i = 0; i < peliculas.length; i++) {
+  var lista = document.querySelector('li');
+  for (var i = 0; i < peliculas.length; i++) {
     var id = document.createElement('h2');
     id.innerHTML = peliculas[i].id;
 
-    var titulo = document.createElement('h1')
+    var titulo = document.createElement('h1');
     titulo.innerHTML = peliculas[i].titulo;
 
-    var descripcion = document.createElement('p')
+    var descripcion = document.createElement('p');
     descripcion.innerHTML = peliculas[i].descripcion;
 
     var imagen = document.createElement('img');
@@ -83,12 +85,12 @@ function renderizarPeliculas() {
 
 btnAgregar.onclick = function() {
   agregarPeliculas();
-}
+};
 
 btnEliminar.onclick = function() {
   eliminarPeliculas();
-}
+};
 
 btnListar.onclick = function() {
   renderizarPeliculas();
-}
+};
