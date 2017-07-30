@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Clase02 - Estructura de Control</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // Estructura de Control If: tomar desiciones en función de una condición
+      var edad = parseInt(prompt("¿Qué edad tenés?"));
+
+      if(edad < 12) {
+        alert("Todavía eres muy pequeño.");
+      }
+      else if(edad < 19) {
+        alert("¡Bien! Todavía sos un adolescente.");
+      }
+      else if(edad < 35) {
+        alert("No te preocupes, seguís siendo joven.");
+      }
+
+      // Estructura for: permite realizar repeticiones (bucles) de forma sencilla.
+      var mensaje = "Hola, estoy dentro de un For.";
+      for(var i = 0; i < 5; i++){
+        alert(mensaje);
+      }
+
+      // For in Loop
+      var dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+      for(var i = 0; i < 7; i++) {
+        alert(dias[i]);
+      }
+
+      // Switch
+      var nivel = "Principiante";
+
+      switch(nivel) {
+        case "Principiante":
+          alert("Bienvenido al curso.");
+          break;
+        case "Avanzado":
+          alert("Felicitaciones.");
+          break;
+        default:
+          alert("Comunicarse con la oficina de admisiones.");
+          break;
+      }
+
+      //While
+      var resultado = 0;
+      var numero = 100;
+      var i = 0;
+
+      while(i <= numero){
+        resultado += i;
+        i++;
+      }
+      alert(resultado);
+
+    </script>
+  </body>
+</html>

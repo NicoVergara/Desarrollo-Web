@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TP02 - Estructura de Control</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      // Ejercicio 1: Array para consultar por sabado o domingo y devuelve es fin de semana.
+      var dias = [
+          "lunes",
+          "martes",
+          "miercoles",
+          "jueves",
+          "viernes",
+          "sabado",
+          "domingo"
+      ];
+
+      var diaIngresado = prompt("Ingrese un dìa").toLowerCase();
+      for(var i = 0; i < dias.length; i++) {
+        if(diaIngresado == dias[5] || diaIngresado == dias[6]){
+          alert("¡Es fin de semana!");
+          break;
+        }
+      }
+
+      // Ejercicio 2: Array que recorre los días de la semana y devuelve día hábil o fin de semana.
+      var dias = [
+          "lunes",
+          "martes",
+          "miercoles",
+          "jueves",
+          "viernes",
+          "sabado",
+          "domingo"
+      ];
+
+      var diaIngresado = prompt("Ingrese un día").toLowerCase();
+      for(var i = 0; i < dias.length; i++){
+        if(diaIngresado == dias[5] || diaIngresado == dias[6]){
+          alert("¡Es fin de semana!");
+          break;
+        }
+        else{
+          alert("¡Es día hábil!");
+          break;
+        }
+      }
+
+      //  Ejercicio 3:
+      //  1. Para números del 1 al 100, imprimir "Estos son números pares:" seguido de todos los números pares.
+      //  2. Ahora lo mismo pero con los impares.
+      mensajePar = "Estos son los números pares: ";
+      mensajeImpar = "Estos son los números impares: ";
+      for(numero = 1; numero <= 100; numero++){
+        if(numero % 2){
+          mensajeImpar = mensajeImpar + numero + " ";
+        }else{
+          mensajePar += numero + " ";
+        }
+      }
+
+      console.log(mensajePar);
+      console.log(mensajeImpar);
+      alert(mensajePar);
+      alert(mensajeImpar);
+
+      // Si le pido ingresar el número al usuario
+      // var numero = prompt("Ingresá un número del 1 al 1o");
+      //
+      // var resultado = parImpar(numero);
+      // alert("El número "+numero+" es "+resultado);
+      //
+      // function parImpar(numero){
+      //   if(numero % 2 == 0) {
+      //     return "par";
+      //   }
+      //   else {
+      //     return "impar";
+      //   }
+      // }
+
+
+      // Ejercicio 4: Generar un número al azar. Para eso usamos Math.floor(Math.random()*11) --> Genera un número al azar entre 0 y 10
+      // 1. Generar un número al azar cada vez ejecutamos.
+      // 2. Para cada número, dar distintos puntos:
+      //    1, 2, 3: 5 puntos
+      //    4, 5, 6: 10 puntos
+      //    7, 8, 9: 50 puntos
+      // 3. Si sale el número 0, el jugador perdió. Informarlo con un mensaje.
+      // 4. Si sale el número 10, el jugador ganó. Informarlo con un mensaje.
+      var numeroAleatorio = Math.floor(Math.random()*11);
+      if(numeroAleatorio == 0){
+        alert("¡Perdiste!");
+      }else if(numeroAleatorio == 10){
+        alert("¡Ganaste!");
+      }
+      if(numeroAleatorio == 1 || numeroAleatorio == 2 || numeroAleatorio == 3){
+        alert("¡Sumaste 5 puntos!");
+      }else if(numeroAleatorio == 4 || numeroAleatorio == 5 || numeroAleatorio == 6){
+        alert("¡Sumaste 10 puntos!");
+      }else{
+        alert("¡Sumaste 50 puntos!");
+      }
+
+      // Ejercicio 4: Piedra, Papel, o Tijera!
+      // Generar un array con las tres opciones.
+      // Generar la opción de la computadora usando Math.floor(Math.random())*3) --> nos devuelve 0, 1 o 2
+      // Pedir la opción por escrito y fijarnos a qué opción equivale.
+      // Checkear si ganó, perdió o empató y mostrar mensaje.
+      var eligeUsuario = prompt("¿Piedra, Papel o Tijera?");
+
+      var eligeComputadora = Math.floor(Math.random()*3);
+      if(eligeComputadora == 0){
+        eligeComputadora = "Piedra";
+      }else if(eligeComputadora == 1){
+        eligeComputadora = "Papel";
+      }else{
+        eligeComputadora = "Tijera";
+      }
+      alert("Computadora Elige: " + eligeComputadora);
+
+      var jugar = function(eligeUsuario, eligeComputadora){
+        if(eligeUsuario == eligeComputadora){
+          return "¡Empate!";
+        }
+        if(eligeUsuario == "Piedra"){
+          if(eligeComputadora == "Tijera"){
+            return "¡Ganaste!";
+          }else{
+            return "¡Perdiste!";// eligeComputadora: PAPEL
+          }
+        }
+        if(eligeUsuario == "Papel"){
+          if(eligeComputadora == "Piedra"){
+            return "¡Ganaste!";
+          }else{
+            return "¡Perdiste!";// eligeComputadora: TIJERA
+          }
+        }
+        if(eligeUsuario == "Tijera"){
+          if(eligeComputadora == "Papel"){
+            return "¡Ganaste!";
+          }else{
+            return "¡Perdiste!";// eligeComputadora: PIEDRA
+          }
+        }
+      }
+
+      alert(jugar(eligeUsuario, eligeComputadora));
+
+    </script>
+  </body>
+</html>
