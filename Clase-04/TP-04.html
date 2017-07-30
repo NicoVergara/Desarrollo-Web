@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>TP04 - Objetos</title>
+</head>
+
+<body>
+  <script>
+
+    function agregarPeliculas() {
+
+      var titulo = prompt("Ingrese título");
+      var id = parseInt(prompt("Ingrese un ID"));
+      var actor = prompt("Ingrese un Actor");
+
+      // Constructor de Película
+      function Pelicula(titulo, id, actor) {
+        this.titulo = titulo;
+        this.id = id;
+        this.actores = actor;
+      }
+
+      // Instacia de objeto Película
+      var peli = new Pelicula();
+        peli.titulo = titulo;
+        peli.id = id;
+        peli.actores = actor;
+
+      console.log(peli);
+    }
+
+    agregarPeliculas();
+
+
+  </script>
+</body>
+
+</html>
