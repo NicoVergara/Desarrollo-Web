@@ -29,7 +29,6 @@ function agregarPeliculas() {
 
     agregar = confirm('¿Desea agregar otra Película?');
   }
-  renderizarPeliculas();
 }
 
 function eliminarPeliculas() {
@@ -49,7 +48,7 @@ function eliminarPeliculas() {
 
     eliminar = confirm('¿Desea eliminar otra Película?');
   }
-  removerPeliculas();
+  // removerPeliculas();
 }
 
 // Filtrar Películas por ID.
