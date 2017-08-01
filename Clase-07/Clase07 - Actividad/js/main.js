@@ -11,7 +11,7 @@ function Noticia(id, titulo, descripcion, imagen) {
 
 btnAgregar.addEventListener('click', function(event) {
   // Para evitar que el navegador se refresque por defecto.
-  event.preventDefault()
+  event.preventDefault();
 
   var nuevaNoticia = new Noticia();
   nuevaNoticia.id = document.getElementById('id').value;
@@ -19,21 +19,20 @@ btnAgregar.addEventListener('click', function(event) {
   nuevaNoticia.descripcion = document.getElementById('descripcion').value;
   nuevaNoticia.imagen = document.getElementById('imagen').value;
 
-  if(buscarNoticias(nuevaNoticia.id) !== -1) {
+  if (buscarNoticias(nuevaNoticia.id) !== -1) {
     alert('El ID ingresado ya existe en la base de datos.');
   } else {
     noticias.push(nuevaNoticia);
     alert('Noticia agregada con éxito.');
   }
   limpiarForm();
-
 });
 
 btnListar.addEventListener('click', function(event) {
   event.preventDefault();
 
   var lista = document.querySelector('li');
-  for(var i = 0; i < noticias.length; i++) {
+  for (var i = 0; i < noticias.length; i++) {
     var id = document.getElementById('id');
     id.innerHTML = noticias[i].id;
 
@@ -57,15 +56,15 @@ btnListar.addEventListener('click', function(event) {
 // findIndex: devuelve el índice del primer elemento del array que cumpla con la función.
 // Caso contrario devuelve -1.
 function buscarNoticias(idBuscado) {
-  return noticias.findIndex(function(noticia){
+  return noticias.findIndex(function(noticia) {
     return noticia.id === idBuscado;
-  })
+  });
 }
 
 // limpiarForm: recorre y limpia todos los inputs del formulario.
-function limpiarForm(){
-  var inputs = document.getElementsByTagName("input");
-  for(var i = 0; i < inputs.length; i++){
+function limpiarForm() {
+  var inputs = document.getElementsByTagName('input');
+  for (var i = 0; i < inputs.length; i++) {
     inputs[i].value = '';
   }
 }
