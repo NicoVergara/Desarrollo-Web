@@ -52,6 +52,7 @@ btnEliminar.addEventListener('click', function(event) {
         ' fue eliminada correctamente.'
     );
     limpiarForm();
+    filtrar();
   } else {
     alert('La Película no se encuentra en la base de datos.');
   }
@@ -59,7 +60,10 @@ btnEliminar.addEventListener('click', function(event) {
 
 btnListar.addEventListener('click', function(event) {
   event.preventDefault();
+  filtrar();
+});
 
+function filtrar() {
   var bodyChildren = document.body.children;
   if (bodyChildren['divTable'] != null) {
     bodyChildren['divTable'].remove();
@@ -106,7 +110,7 @@ btnListar.addEventListener('click', function(event) {
   divTable.setAttribute('id', 'divTable');
   divTable.setAttribute('class', 'col-xs-12');
   document.body.appendChild(divTable);
-});
+}
 
 btnFiltroId.addEventListener('click', function(event) {
   event.preventDefault();
