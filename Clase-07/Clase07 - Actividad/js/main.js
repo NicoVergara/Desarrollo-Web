@@ -13,11 +13,21 @@ btnAgregar.addEventListener('click', function(event) {
   // Para evitar que el navegador se refresque por defecto.
   event.preventDefault();
 
+  var id = document.getElementById('id').value;
+  var titulo = document.getElementById('titulo').value;
+  var descripcion = document.getElementById('descripcion').value;
+  var imagen = document.getElementById('imagen').value;
+
+  if (!id || !titulo || !descripcion || !imagen) {
+    alert('¡Te quedaron campos vacíos!');
+    return;
+  }
+
   var nuevaNoticia = new Noticia();
-  nuevaNoticia.id = document.getElementById('id').value;
-  nuevaNoticia.titulo = document.getElementById('titulo').value;
-  nuevaNoticia.descripcion = document.getElementById('descripcion').value;
-  nuevaNoticia.imagen = document.getElementById('imagen').value;
+  nuevaNoticia.id = id;
+  nuevaNoticia.titulo = titulo;
+  nuevaNoticia.descripcion = descripcion;
+  nuevaNoticia.imagen = imagen;
 
   if (buscarNoticias(nuevaNoticia.id) !== -1) {
     alert('El ID ingresado ya existe en la base de datos.');

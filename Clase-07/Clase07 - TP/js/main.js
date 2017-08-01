@@ -20,7 +20,7 @@ btnAgregar.addEventListener('click', function(event) {
   var fecha = document.getElementById('fecha').value;
 
   if (!id || !titulo || !fecha) {
-    alert('Te quedaron campos sin completar.');
+    alert('¡Te quedaron campos sin completar!');
     return;
   }
 
