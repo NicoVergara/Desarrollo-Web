@@ -1,7 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: 'Roboto', sans-serif;
-  background: #edf0f1;
+  font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial',
+    sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.4rem;
+  line-height: 2rem;
   padding-top: 100px;
+  letter-spacing: 0.01rem;
+  color: #212121;
+  background-color: #f5f5f5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 header {
@@ -9,16 +24,67 @@ header {
   height: 80px;
   text-align: center;
   position: fixed;
-  padding: 15px;
+  padding: 15px 20px;
   top: 0;
   left: 0;
   z-index: 5;
-  background: #25b99a;
+  background: #4f84c4;
   box-shadow: 0px 2px 4px rgba(44, 62, 80, 0.15);
 }
 
-header h1 {
-  font-size: 38px;
+header h2 {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 1.6em;
+  margin: 0.67em 0;
   color: #fff;
-  font-weight: bold;
+}
+
+#diario-form {
+  margin-top: 10px;
+}
+
+.form-control {
+  border-radius: 0;
+  height: auto;
+  box-shadow: none !important;
+}
+
+.form-control {
+  border-radius: 0;
+  height: auto;
+  box-shadow: none !important;
+}
+
+.form-control,
+input,
+select,
+textarea {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  background: 0 0;
+  color: #323336;
+  font-size: 14px;
+  margin: 0;
+  outline: 0;
+  padding: 8px 20px 8px 0;
+}
+
+.button {
+  font-size: 13px;
+  color: #fff;
+  background-color: #5c71af;
+  padding: 10px 30px;
+  margin-top: 40px !important;
+  display: inline-block;
+  outline: none;
+  position: relative;
+  border: none;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  transition: all .3s ease 0s;
+}
+
+.button:hover {
+  background-color: #6b6d6f;
 }
