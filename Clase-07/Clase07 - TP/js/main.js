@@ -36,25 +36,32 @@ btnAgregar.addEventListener('click', function(event) {
     alert('Película agregada con éxito.');
   }
   limpiarForm();
+  //Focus en el campo ID.
 });
 
 btnEliminar.addEventListener('click', function(event) {
   event.preventDefault();
 
-  var peliculaAEliminar = new Pelicula();
-  peliculaAEliminar.id = document.getElementById('id').value;
+  var idAEliminar = document.getElementById('id').value;
+  if (idAEliminar) {
+    var peliculaAEliminar = new Pelicula();
+    peliculaAEliminar.id = idAEliminar;
 
-  if (buscarPeliculas(peliculaAEliminar.id) !== -1) {
-    peliculas.splice(peliculaAEliminar, 1);
-    alert(
-      'La Película con el ID: ' +
-        peliculaAEliminar.id +
-        ' fue eliminada correctamente.'
-    );
-    limpiarForm();
-    filtrar();
+    if (buscarPeliculas(peliculaAEliminar.id) !== -1) {
+      peliculas.splice(peliculaAEliminar, 1);
+      alert(
+        'La Película con el ID: ' +
+          peliculaAEliminar.id +
+          ' fue eliminada correctamente.'
+      );
+      limpiarForm();
+      filtrar();
+    } else {
+      alert('La Película no se encuentra en la base de datos.');
+    }
   } else {
-    alert('La Película no se encuentra en la base de datos.');
+    alert('Por favor completar el campo ID.');
+    // Focus en el campo ID.
   }
 });
 
