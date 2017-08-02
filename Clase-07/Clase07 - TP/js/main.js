@@ -181,56 +181,61 @@ btnFiltroId.addEventListener('click', function(event) {
 btnFiltroTitulo.addEventListener('click', function(event) {
   event.preventDefault();
 
-  var tituloPelicula = document.getElementById('titulo');
-  var bodyChildren = document.body.children;
-  if (bodyChildren['divTable'] != null) {
-    bodyChildren['divTable'].remove();
-  }
-
-  var divTable = document.createElement('div');
-  var table = document.createElement('table');
-  var thead = document.createElement('thead');
-  var tbody = document.createElement('tbody');
-  var trHeader = document.createElement('tr');
-  var thId = document.createElement('th');
-  var thTitulo = document.createElement('th');
-  var thFecha = document.createElement('th');
-  thId.appendChild(document.createTextNode('ID'));
-  thTitulo.appendChild(document.createTextNode('Título'));
-  thFecha.appendChild(document.createTextNode('Fecha'));
-  trHeader.appendChild(thId);
-  trHeader.appendChild(thTitulo);
-  trHeader.appendChild(thFecha);
-  thead.appendChild(trHeader);
-  table.appendChild(thead);
-
-  for (var i = 0; i < peliculas.length; i++) {
-    if (peliculas[i].titulo === titulo.value) {
-      var tr = document.createElement('tr');
-      var th = document.createElement('th');
-      var td1 = document.createElement('td');
-      td1.setAttribute('class', 'col-xs-2');
-      var td2 = document.createElement('td');
-      td2.setAttribute('class', 'col-xs-4');
-      var td3 = document.createElement('td');
-      td3.setAttribute('class', 'col-xs-4');
-      td1.appendChild(document.createTextNode(peliculas[i].id));
-      td2.appendChild(document.createTextNode(peliculas[i].titulo));
-      td3.appendChild(document.createTextNode(peliculas[i].fecha));
-      tr.appendChild(td1);
-      tr.appendChild(td2);
-      tr.appendChild(td3);
-      tbody.appendChild(tr);
-      table.appendChild(tbody);
+  var tituloPelicula = document.getElementById('titulo').value;
+  if (tituloPelicula) {
+    var bodyChildren = document.body.children;
+    if (bodyChildren['divTable'] != null) {
+      bodyChildren['divTable'].remove();
     }
 
-    table.setAttribute('class', 'table table-over');
-    divTable.appendChild(table);
-    divTable.setAttribute('id', 'divTable');
-    divTable.setAttribute('class', 'col-xs-12');
-    document.body.appendChild(divTable);
+    var divTable = document.createElement('div');
+    var table = document.createElement('table');
+    var thead = document.createElement('thead');
+    var tbody = document.createElement('tbody');
+    var trHeader = document.createElement('tr');
+    var thId = document.createElement('th');
+    var thTitulo = document.createElement('th');
+    var thFecha = document.createElement('th');
+    thId.appendChild(document.createTextNode('ID'));
+    thTitulo.appendChild(document.createTextNode('Título'));
+    thFecha.appendChild(document.createTextNode('Fecha'));
+    trHeader.appendChild(thId);
+    trHeader.appendChild(thTitulo);
+    trHeader.appendChild(thFecha);
+    thead.appendChild(trHeader);
+    table.appendChild(thead);
+
+    for (var i = 0; i < peliculas.length; i++) {
+      if (peliculas[i].titulo === titulo.value) {
+        var tr = document.createElement('tr');
+        var th = document.createElement('th');
+        var td1 = document.createElement('td');
+        td1.setAttribute('class', 'col-xs-2');
+        var td2 = document.createElement('td');
+        td2.setAttribute('class', 'col-xs-4');
+        var td3 = document.createElement('td');
+        td3.setAttribute('class', 'col-xs-4');
+        td1.appendChild(document.createTextNode(peliculas[i].id));
+        td2.appendChild(document.createTextNode(peliculas[i].titulo));
+        td3.appendChild(document.createTextNode(peliculas[i].fecha));
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tbody.appendChild(tr);
+        table.appendChild(tbody);
+      }
+
+      table.setAttribute('class', 'table table-over');
+      divTable.appendChild(table);
+      divTable.setAttribute('id', 'divTable');
+      divTable.setAttribute('class', 'col-xs-12');
+      document.body.appendChild(divTable);
+    }
+    limpiarForm();
+  } else {
+    alert('Por favor ingresar Título.');
+    document.getElementById('titulo').focus();
   }
-  limpiarForm();
 });
 
 // Filtrar Películas por ID.
