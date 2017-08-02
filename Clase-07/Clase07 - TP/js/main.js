@@ -176,7 +176,7 @@ btnFiltroId.addEventListener('click', function(event) {
 btnFiltroTitulo.addEventListener('click', function(event) {
   event.preventDefault();
 
-  var idPelicula = document.getElementById('id');
+  var tituloPelicula = document.getElementById('titulo');
   var bodyChildren = document.body.children;
   if (bodyChildren['divTable'] != null) {
     bodyChildren['divTable'].remove();
