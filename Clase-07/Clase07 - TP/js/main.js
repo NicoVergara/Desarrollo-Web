@@ -12,7 +12,6 @@ function Pelicula(id, titulo, fecha) {
 }
 
 btnAgregar.addEventListener('click', function(event) {
-  // Para evitar que el navegador se refresque por defecto.
   event.preventDefault();
 
   var id = document.getElementById('id').value;
