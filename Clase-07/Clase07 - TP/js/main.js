@@ -18,24 +18,23 @@ btnAgregar.addEventListener('click', function(event) {
   var titulo = document.getElementById('titulo').value;
   var fecha = document.getElementById('fecha').value;
 
-  if (!id || !titulo || !fecha) {
-    alert('¡Te quedaron campos sin completar!');
-    return;
-  }
+  if (id && titulo && fecha) {
+    var nuevaPelicula = new Pelicula();
+    nuevaPelicula.id = id;
+    nuevaPelicula.titulo = titulo;
+    nuevaPelicula.fecha = fecha;
 
-  var nuevaPelicula = new Pelicula();
-  nuevaPelicula.id = id;
-  nuevaPelicula.titulo = titulo;
-  nuevaPelicula.fecha = fecha;
-
-  if (buscarPeliculas(nuevaPelicula.id) !== -1) {
-    alert('El ID ingresado ya existe en la base de datos.');
+    if (buscarPeliculas(nuevaPelicula.id) !== -1) {
+      alert('El ID ingresado ya existe en la base de datos.');
+    } else {
+      peliculas.push(nuevaPelicula);
+      alert('Película agregada con éxito.');
+    }
+    limpiarForm();
+    document.getElementById('id').focus();
   } else {
-    peliculas.push(nuevaPelicula);
-    alert('Película agregada con éxito.');
+    alert('Te quedaron campos por completar.');
   }
-  limpiarForm();
-  document.getElementById('id').focus();
 });
 
 btnEliminar.addEventListener('click', function(event) {
