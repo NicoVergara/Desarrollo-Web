@@ -36,7 +36,7 @@ btnAgregar.addEventListener('click', function(event) {
     alert('Película agregada con éxito.');
   }
   limpiarForm();
-  //Focus en el campo ID.
+  document.getElementById('id').focus();
 });
 
 btnEliminar.addEventListener('click', function(event) {
@@ -61,7 +61,7 @@ btnEliminar.addEventListener('click', function(event) {
     }
   } else {
     alert('Por favor completar el campo ID.');
-    // Focus en el campo ID.
+    document.getElementById('id').focus();
   }
 });
 
