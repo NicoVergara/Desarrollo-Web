@@ -155,6 +155,7 @@ btnAgregar.addEventListener('click', function(event) {
   }
   limpiarForm();
   lista.listarTareas();
+  document.getElementById('id').focus();
 });
 
 btnBuscar.addEventListener('click', function(event) {
