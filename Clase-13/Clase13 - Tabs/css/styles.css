@@ -1,0 +1,57 @@
+/* Base styles */
+
+body {
+	font-family: arial;
+}
+
+h1 {
+	color: #ac341c;
+	margin-bottom: 0px;
+	margin-top: 0;
+	font-size: 80px;
+	text-align: center;
+	line-height: 70px;
+}
+
+
+.subtitle {
+	font-size: 30px;
+	margin-top: 0;
+	text-align: center;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.tabs ul {
+    margin: 0;
+    padding: 0
+}
+
+.tab {
+    display: inline-block;
+    border: 1px solid;
+    padding: 6px 20px;
+    font-size: 17px;
+    border-radius: 5px 5px 0 0;
+    background-color: #ccc;
+    color: white;
+    font-weight: bold;
+    margin-right: 0px;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+
+.tab.active {
+    background-color: navy;
+}
+
+.content-container {
+    border: 1px solid ;
+    padding: 40px;
+    font-size:20px; 
+    position: relative;
+    top: -1px;    
+}
