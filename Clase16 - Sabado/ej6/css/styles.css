@@ -1,0 +1,86 @@
+/* Base styles */
+
+body {
+	font-family: arial;
+}
+
+h1 {
+	color: #ac341c;
+	margin-bottom: 0px;
+	margin-top: 0;
+	font-size: 80px;
+	text-align: center;
+	line-height: 70px;
+    margin-bottom: 50px;
+}
+
+h2 {
+	text-transform: uppercase;
+}
+
+p.description {
+    display: none;
+}
+
+.subtitle {
+	font-size: 30px;
+	margin-top: 0;
+	text-align: center;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.center-auto {
+	margin: 0 auto; /* tambien se puede hacer "margin-left: auto;margin-right:auto;" y lograr lo mismo */ 
+}
+
+.centered-block {
+	width: 30%
+	height: 200px;
+	margin: 0 auto;
+	background-color: green;
+}
+
+.color-component {
+    display: inline-block;
+    width: 200px;
+}
+
+.color-component label {
+    font-weight: bold;
+}
+
+.color-component input {
+    cursor: pointer;
+}
+
+.color-component .image-container {
+    border: 1px solid #ccc;
+    height: 300px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.color-component img {
+    max-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+}
+
+
+#stan {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+input[type='radio'] {
+    width: 30px;
+}
