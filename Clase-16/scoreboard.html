@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Clase16 - Patrones</title>
+  </head>
+  <body>
+
+    <button id="agregarJugadores">Agregar</button>
+    <ul>Lista de Jugadores</ul>
+
+    <script type="text/javascript">
+      var Jugadores = (function () {
+        var jugadores = [];
+        var btnAgregar = document.querySelector('agregarJugadores');
+
+        function Jugador(id, nombre, puntos) {
+          this.id = id;
+          this.nombre = nombre;
+          this.puntos = puntos;
+        }
+
+        function restaurarJugadores() {
+          var jsonToParse = localStorage.getItem('jugadores');
+          var restore = JSON.parse(jsonToParse);
+          jugadores = restore;
+          renderizarJugador();
+        }
+
+        function guardarJugadores() {
+          var jugadoresString = JSON.stringify(jugadores);
+          localStorage.setItem('jugadores', jugadoresString);
+        }
+
+        function agregarJugadores() {
+          var consulta = confirm('¿Desea agregar un nuevo Jugador?');
+          while(consulta) {
+            var nuevoJugador = new Jugador();
+            nuevoJugador.id = parseInt(prompt('Ingrese el Nº de camiseta del Jugador:'));
+            nuevoJugador.nombre = prompt('Ingrese el Nombre del Jugador:');
+            nuevoJugador.puntos = parseInt(prompt('Ingrese los Puntos del Jugador'));
+
+            if(buscarJugador(nuevoJugador.id) !== -1) {
+              alert('El Jugador ya se encuentra en la base de datos.');
+            } else {
+              jugadores.push(nuevoJugador);
+              alert('¡Jugador agregando correctamente!');
+            }
+            consulta = confirm('¿Desea agregar otro Jugador?');
+          }
+          renderizarJugador();
+          guardarJugadores();
+        }
+
+        function buscarJugador(idBuscado) {
+          return jugadores.findIndex(function(jugador) {
+            return jugador.id === idBuscado;
+          })
+        }
+
+      	function renderizarJugador() {
+      		var lista = document.querySelector('ul');
+          for(var i = 0; i < jugadores.length; i++) {
+            var id = document.createElement('h2');
+            id.innerHTML = jugadores[i].id;
+
+            var nombre = document.createElement('h1');
+            nombre.innerHTML = jugadores[i].nombre;
+
+            var puntos = document.createElement('h3');
+            puntos.innerHTML = jugadores[i].puntos;
+
+            lista.appendChild(id);
+            lista.appendChild(nombre);
+            lista.appendChild(puntos);
+          }
+      	}
+
+      	return {
+      		init: function () {
+            agregarJugadores();
+            restaurarJugadores();
+      		}
+      	}
+
+      })()
+
+      Jugadores.init();
+    </script>
+  </body>
+</html>
